@@ -37,6 +37,7 @@ provider:
     useCloudFormation: true
   environment:
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
+    SAMPLE_DEBUG_LOG_RATE: 0.1
     serviceName: ${self:service}
     stage: ${self:custom.stage}
     rest_api_url:
