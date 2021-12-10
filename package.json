@@ -20,8 +20,10 @@
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "jest": "^27.4.3",
+    "rxjs": "^7.4.0",
     "serverless": "^2.68.0",
-    "serverless-export-env": "^2.0.0"
+    "serverless-export-env": "^2.0.0",
+    "serverless-export-outputs": "^1.0.2"
   },
   "sls": "serverless",
   "dependencies": {
