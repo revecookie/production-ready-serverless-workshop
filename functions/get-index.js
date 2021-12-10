@@ -5,6 +5,8 @@ const http = require('axios')
 const aws4 = require('aws4')
 const URL = require('url')
 const wrap = require('@dazn/lambda-powertools-pattern-basic')
+const AWSXRay = require('aws-xray-sdk-core')
+AWSXRay.captureHTTPsGlobal(require('https'))
 
 const restaurantsApiRoot = process.env.restaurants_api
 const ordersApiRoot = process.env.orders_api

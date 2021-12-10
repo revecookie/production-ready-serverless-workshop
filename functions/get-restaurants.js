@@ -2,6 +2,8 @@ const DocumentClient = require('aws-sdk/clients/dynamodb').DocumentClient
 const Log = require('@dazn/lambda-powertools-logger')
 const wrap = require('@dazn/lambda-powertools-pattern-basic')
 const dynamodb = new DocumentClient()
+const XRay = require('aws-xray-sdk-core')
+XRay.captureAWSClient(dynamodb.service)
 const ssm = require('@middy/ssm')
 
 const { serviceName, stage } = process.env

@@ -27,6 +27,8 @@ custom:
       - CognitoUserPoolServerClientId
     output:
       file: ./.env-outputs
+  serverless-iam-roles-per-function:
+    defaultInherit: true
 
 frameworkVersion: '2'
 
@@ -36,6 +38,7 @@ provider:
   eventBridge:
     useCloudFormation: true
   environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
     SAMPLE_DEBUG_LOG_RATE: 0.1
     serviceName: ${self:service}
@@ -46,6 +49,15 @@ provider:
         - - https://
           - !Ref ApiGatewayRestApi
           - .execute-api.${self:provider.region}.amazonaws.com/${self:custom.stage}
+  tracing:
+    apiGateway: true
+    lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource: "*"
     
 functions:
   get-index:
