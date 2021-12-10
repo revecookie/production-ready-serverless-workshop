@@ -28,6 +28,7 @@
   },
   "sls": "serverless",
   "dependencies": {
+    "@dazn/lambda-powertools-logger": "^1.28.1",
     "@middy/core": "^2.5.3",
     "@middy/ssm": "^2.5.3",
     "aws4": "^1.11.0",
